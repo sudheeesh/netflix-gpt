@@ -7,4 +7,11 @@ Login
 header
 signIn/signup
 form validation
-Browse
+useref hook
+firebase setup
+deploying app to our production
+signup/signin createmailandpass & signinmailandpass
+created redux and userslice
+implemented signout
+updated profile
+fetch api from tmdb movies
