@@ -4,13 +4,15 @@ import { checkValidData } from '../utensils/Validate';
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../utensils/firebase"
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
+import { Background_Pic, User_Icon } from '../utensils/userfiles';
+import { adduser } from '../utensils/userSlice';
+import { useDispatch } from 'react-redux';
 
 const Login = () => {
 
   const[signInForm, SetsignInForm] = useState(true);
   const[errorMessage, SeterrorMessage] = useState(null);
-  const navigate = useNavigate();
+  const dispatch = useDispatch()
 
   const email = useRef(null);
   const password = useRef(null);
@@ -36,11 +38,19 @@ const Login = () => {
         const user = userCredential.user;
         updateProfile(user, {
           displayName: name.current.value, 
-          photoURL: "https://lh3.googleusercontent.com/a/ACg8ocJNR6ruBN8AxGcQToQIHYJltFjP47VzOt8u5Lcm0JpKcHy-h_T3=s432-c-no"
-        }).then(() => {
-           navigate('/browse')
+          photoURL: User_Icon
+        })
+          .then(() => {
+            const {uid,email,displayName,photoURL} = auth.currentUser;
+            dispatch(
+              adduser({
+                uid : uid,
+                email: email,
+                displayName: displayName,
+                photoURL:photoURL,
+              })
+            );
         }).catch((error) => {
-           navigate('/error')
            SeterrorMessage(error.message)
         });
       })
@@ -57,7 +67,6 @@ const Login = () => {
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        navigate('/browse')
         
       })
       .catch((error) => {
@@ -80,7 +89,7 @@ const Login = () => {
     <div >
      <Header/>
      <div className='absolute'>
-        <img src='https://assets.nflxext.com/ffe/siteui/vlv3/74d734ca-0eab-4cd9-871f-bca01823d872/web/IN-en-20241021-TRIFECTA-perspective_2277eb50-9da3-4fdf-adbe-74db0e9ee2cf_small.jpg'/>
+        <img src={Background_Pic}/>
      </div>
      <form 
          onSubmit={(e) => e.preventDefault() }
