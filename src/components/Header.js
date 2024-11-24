@@ -48,7 +48,7 @@ const Header = () => {
         src={User_Icon}
          />
     
-      <button onClick={handleSignout} className='text-xl text-stone-900 font-serif font-bold'>Sign Out</button>
+      <button onClick={handleSignout} className='text-xl text-white font-serif font-bold'>Sign Out</button>
       </div>}
     </div>
   )
