@@ -7,11 +7,13 @@ import useTopRatedMovies from '../hooks/useTopRatedMovies';
 import useUpcomingMovies from '../hooks/useUpcomingMovies';
 import useAiringMovies from '../hooks/useAiringMovies';
 import useOnTheAirMovies from '../hooks/useOnTheAirMovies';
+import useTrendingMovies from '../hooks/useTrendingMovies';
 
 
 const Browse = () => {
    
   useNowPlayingMovies();
+  useTrendingMovies();
   usePopularMovies();
   useTopRatedMovies();
   useUpcomingMovies();

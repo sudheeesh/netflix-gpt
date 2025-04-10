@@ -32,3 +32,7 @@ fetch daTa for trailer video
 update store with trailer video data
 embedded the youtube video and make it autoplay and mute
 build secondary container
+create movielist moviecard
+image cdn url from tmdb
+made the browser page with amazing tailwindcss
+usepopular airing ontheair upcoming toprated custom hooks
